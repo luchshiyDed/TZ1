@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/device/computer")
-public class ComputerDeviceController {
+public class ComputerController {
     @Autowired
     private final ComputerModelService modelService;
     @Autowired
@@ -48,5 +48,13 @@ public class ComputerDeviceController {
     @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<ComputerModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
         return  modelService.getByCost(min, max, page, Sort.by(sort));
+    }
+    @GetMapping("/model/processor/{processor}/{page}")
+    public Page<ComputerModel> getByProcessor(@PathVariable String processor, @PathVariable Integer page){
+        return modelService.getByProcessor(processor,page);
+    }
+    @GetMapping("/model/category/{category}/{page}")
+    public Page<ComputerModel> getByCategory(@PathVariable String category,@PathVariable Integer page){
+        return modelService.getByCategory(category,page);
     }
 }

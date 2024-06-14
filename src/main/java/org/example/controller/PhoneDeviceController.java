@@ -1,10 +1,7 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
-import org.example.model.FridgeDevice;
-import org.example.model.FridgeModel;
-import org.example.model.PhoneDevice;
-import org.example.model.PhoneModel;
+import org.example.model.*;
 import org.example.sevice.PhoneDeviceService;
 import org.example.sevice.PhoneModelService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,5 +46,13 @@ public class PhoneDeviceController {
     @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<PhoneModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
         return  modelService.getByCost(min, max, page, Sort.by(sort));
+    }
+    @GetMapping("/model/memory/{memory}/{page}")
+    public Page<PhoneModel> getByMemory(@PathVariable String memory, @PathVariable Integer page){
+        return modelService.getByMemory(memory,page);
+    }
+    @GetMapping("/model/camerasCnt/{camerasCnt}/{page}")
+    public Page<PhoneModel> getByCameras(@PathVariable Integer camerasCnt,@PathVariable Integer page){
+        return modelService.getByCamerasCnt(camerasCnt,page);
     }
 }

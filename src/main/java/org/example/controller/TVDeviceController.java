@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import lombok.RequiredArgsConstructor;
+import org.example.model.CleanerModel;
 import org.example.model.TVDevice;
 import org.example.model.TVModel;
 import org.example.sevice.TVDeviceService;
@@ -47,5 +48,13 @@ public class TVDeviceController {
     @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<TVModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
         return  modelService.getByCost(min, max, page, Sort.by(sort));
+    }
+    @GetMapping("/model/category/{category}/{page}")
+    public Page<TVModel> getByCategory(@PathVariable String category, @PathVariable Integer page){
+        return modelService.getByCategory(category,page);
+    }
+    @GetMapping("/model/technology/{technology}/{page}")
+    public Page<TVModel> getByTechnology(@PathVariable String technology,@PathVariable Integer page){
+        return modelService.getByTechnology(technology,page);
     }
 }

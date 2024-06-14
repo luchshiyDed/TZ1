@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/device/fridge")
-public class FridgeDeviceController {
+public class FridgeController {
     @Autowired
     private final FridgeModelService modelService;
     @Autowired
@@ -47,5 +47,13 @@ public class FridgeDeviceController {
     @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<FridgeModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
         return  modelService.getByCost(min, max, page, Sort.by(sort));
+    }
+    @GetMapping("/model/compressor/{compressor}/{page}")
+    public Page<FridgeModel> getByCompressor(@PathVariable String compressor, @PathVariable Integer page){
+        return modelService.getByCompressor(compressor,page);
+    }
+    @GetMapping("/model/door/{cnt}/{page}")
+    public Page<FridgeModel> getByDoor(@PathVariable Integer cnt,@PathVariable Integer page){
+        return modelService.getByDoorCnt(cnt,page);
     }
 }

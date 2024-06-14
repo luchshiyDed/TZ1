@@ -11,12 +11,10 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/api/v1/cleaner")
-public class CleanerDeviceController {
+public class CleanerController {
     @Autowired
     private final CleanerModelService modelService;
     @Autowired
@@ -50,6 +48,14 @@ public class CleanerDeviceController {
     @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<CleanerModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
         return  modelService.getByCost(min, max, page, Sort.by(sort));
+    }
+    @GetMapping("/model/modeCnt/{cnt}/{page}")
+    public Page<CleanerModel> getByModeCnt(@PathVariable Integer modeCnt,@PathVariable Integer page){
+        return modelService.getByModeCnt(modeCnt,page);
+    }
+    @GetMapping("/model/volume/{volume}/{page}")
+    public Page<CleanerModel> getByVolume(@PathVariable String volume,@PathVariable Integer page){
+        return modelService.getByDustCollVolume(volume,page);
     }
 
 }
