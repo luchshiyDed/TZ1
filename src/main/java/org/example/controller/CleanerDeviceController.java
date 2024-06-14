@@ -34,22 +34,22 @@ public class CleanerDeviceController {
 
     @GetMapping("/device/country/{country}/{page}")
     public Page<CleanerDevice> getByCountry(@PathVariable String country, @PathVariable Integer page) {
-        return (Page<CleanerDevice>) deviceService.getByCountry(country, page);
+        return  deviceService.getByCountry(country, page);
     }
 
     @GetMapping("/device/manufacture/{manufacture}/{page}")
     public Page<CleanerDevice> getByManufacture(@PathVariable String manufacture, @PathVariable Integer page) {
-        return (Page<CleanerDevice>) deviceService.getByManufacture(manufacture, page);
+        return  deviceService.getByManufacture(manufacture, page);
     }
 
-    @GetMapping("/models/color/{color}/{page}")
+    @GetMapping("/model/color/{color}/{page}")
     public Page<CleanerModel> getByColor(@PathVariable String color, @PathVariable Integer page) {
-        return (Page<CleanerModel>) modelService.getByColor(color, page);
+        return  modelService.getByColor(color, page);
     }
 
-    @GetMapping("/models/cost/{min}/{max}/{sort}/{page}")
+    @GetMapping("/model/cost/{min}/{max}/{sort}/{page}")
     public Page<CleanerModel> getByCost(@PathVariable Integer min, Integer max, @PathVariable String sort, @PathVariable Integer page) {
-        return (Page<CleanerModel>) modelService.getByCost(min, max, page, Sort.by(sort));
+        return  modelService.getByCost(min, max, page, Sort.by(sort));
     }
 
 }
