@@ -1,4 +1,4 @@
-API: http://server:port/swagger-ui/index.html?configUrl=/api-docs/swagger-config
+API: http://server:port/api-docs
 
 config: /src/main/resources db data must be described (user,password,url)
 
