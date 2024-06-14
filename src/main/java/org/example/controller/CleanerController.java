@@ -25,7 +25,7 @@ public class CleanerController {
         return deviceService.createIfNotExists(device);
     }
 
-    @PostMapping("/model/create/{device_id}")
+    @PostMapping("/model/create/{deviceId}")
     public HttpStatus createModel(@PathVariable Long deviceId, @RequestBody CleanerModel model) {
         return deviceService.addModel(deviceId, model);
     }
